@@ -1,0 +1,6 @@
+/chartgpt-server/chartgpt-server.iml
+/chartgpt-ui/node_modules/
+/chartgpt-ui/.history/
+/chartgpt-ui/.nuxt/
+/chartgpt-server/target/
+/.idea/

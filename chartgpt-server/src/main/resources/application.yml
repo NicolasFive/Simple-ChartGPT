@@ -1,0 +1,20 @@
+server:
+  port: ${SERVER_PORT:8000}
+spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  redis:
+    host: ${SERVER_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:my_redis_pwd@}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${SERVER_HOST:localhost}:${DB_PORT:3306}/my?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: ${DB_PASSWORD:my_mysql_pwd@}
+authorization:
+  secretkey: my_secretkey
+  expiresec: 86400
+openai:
+  authorization: ${OPENAI_AUTH:YourAuthorization}

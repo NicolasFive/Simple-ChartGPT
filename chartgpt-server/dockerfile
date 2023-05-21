@@ -1,0 +1,10 @@
+FROM maven:3.6.0-jdk-8-alpine as builder
+WORKDIR /app
+COPY ./mvn/settings.xml /usr/share/maven/ref/
+COPY . .
+RUN mvn package
+
+FROM  openjdk:8-jre
+WORKDIR /app
+COPY --from=builder /app/target/chartgpt-server-1.0.jar .
+ENTRYPOINT ["java","-jar","-Duser.timezone=GMT+8","chartgpt-server-1.0.jar"]

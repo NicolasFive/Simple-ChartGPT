@@ -1,0 +1,118 @@
+version : '3.2'
+services:
+  nf-server:
+    container_name: nf-server
+    build:
+      context: ../chartgpt-server
+    restart: always
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    depends_on:
+      - nf-mysql
+      - nf-redis
+      - nf-ui
+    environment:
+      SERVER_HOST: ${SERVER_HOST}
+      SERVER_PORT: ${SERVER_PORT}
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      DB_PORT: ${DB_PORT}
+      DB_PASSWORD: ${DB_PASSWORD}
+      OPENAI_AUTH: ${OPENAI_AUTH}
+    networks:
+      - nf-network
+  nf-ui:
+    container_name: nf-ui
+    build:
+      context: ../chartgpt-ui
+    restart: always
+    ports:
+      - ${UI_PORT}:${UI_PORT}
+    volumes:
+      - ./logs:/var/log/nginx
+    environment:
+      SERVER_HOST: ${SERVER_HOST}
+      SERVER_PORT: ${SERVER_PORT}
+      UI_PORT: ${UI_PORT}
+    networks:
+      - nf-network
+  nf-mysql:
+    container_name: nf-mysql
+    image: mysql:5.7
+    build:
+      context: ./mysql
+    restart: always
+    ports:
+      - ${DB_PORT}:3306
+    volumes:
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/logs:/logs
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/db:/docker-entrypoint-initdb.d
+    command: [
+        'mysqld',
+        '--innodb-buffer-pool-size=80M',
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci',
+        '--default-time-zone=+8:00',
+        '--lower-case-table-names=1'
+    ]
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - nf-network
+  nf-redis:
+    container_name: nf-redis
+    image: redis
+    build:
+      context: ./redis
+    restart: always
+    ports:
+      - ${REDIS_PORT}:6379
+    volumes:
+      - ./redis/conf/redis.conf:/home/nf/redis/redis.conf
+      - ./redis/data:/data
+    command: redis-server /home/nf/redis/redis.conf
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    networks:
+      - nf-network
+  nf-server-local:
+    container_name: nf-server-local
+    build:
+      context: ./server
+    restart: always
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    depends_on:
+      - nf-mysql
+      - nf-redis
+      - nf-ui-local
+    environment:
+      SERVER_HOST: ${SERVER_HOST}
+      SERVER_PORT: ${SERVER_PORT}
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      DB_PORT: ${DB_PORT}
+      DB_PASSWORD: ${DB_PASSWORD}
+      OPENAI_AUTH: ${OPENAI_AUTH}
+    networks:
+      - nf-network
+  nf-ui-local:
+    container_name: nf-ui-local
+    build:
+      context: ./ui
+    restart: always
+    ports:
+      - ${UI_PORT}:${UI_PORT}
+    volumes:
+      - ./logs:/var/log/nginx
+    environment:
+      SERVER_HOST: ${SERVER_HOST}
+      SERVER_PORT: ${SERVER_PORT}
+      UI_PORT: ${UI_PORT}
+    networks:
+      - nf-network
+networks:
+  nf-network:
+    driver: bridge
