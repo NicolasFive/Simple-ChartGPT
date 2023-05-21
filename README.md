@@ -17,7 +17,8 @@ bash ./start.sh
 2. Access the application by using the provided URL or IP address.
 
 3. The default username is `admin` and the default password is `000000`.
-
+![login](screenshot/login.png)
+![index](screenshot/index.png)
 ## Uninstallation
 
 To uninstall the application, please follow the steps below:
