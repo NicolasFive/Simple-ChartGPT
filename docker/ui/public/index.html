@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html >
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+<style id="vuetify-theme-stylesheet">:root {
+      --v-theme-background: 255,255,255;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 63,81,181;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 48,63,159;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 255,64,129;
+      --v-theme-secondary-overlay-multiplier: 1;
+      --v-theme-secondary-darken-1: 245,0,87;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 176,0,32;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 1;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 251,140,0;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-primary-lighten-1: 197,202,233;
+      --v-theme-primary-lighten-1-overlay-multiplier: 1;
+      --v-theme-secondary-lighten-1: 255,128,171;
+      --v-theme-secondary-lighten-1-overlay-multiplier: 1;
+      --v-theme-accent: 0,150,136;
+      --v-theme-accent-overlay-multiplier: 1;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-theme-on-primary-lighten-1: 0,0,0;
+      --v-theme-on-secondary-lighten-1: 255,255,255;
+      --v-theme-on-accent: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 33, 37, 41;
+      --v-theme-on-kbd: 255, 255, 255;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .v-theme--light {
+      color-scheme: normal;
+      --v-theme-background: 255,255,255;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 63,81,181;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 48,63,159;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 255,64,129;
+      --v-theme-secondary-overlay-multiplier: 1;
+      --v-theme-secondary-darken-1: 245,0,87;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 176,0,32;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 1;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 251,140,0;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-primary-lighten-1: 197,202,233;
+      --v-theme-primary-lighten-1-overlay-multiplier: 1;
+      --v-theme-secondary-lighten-1: 255,128,171;
+      --v-theme-secondary-lighten-1-overlay-multiplier: 1;
+      --v-theme-accent: 0,150,136;
+      --v-theme-accent-overlay-multiplier: 1;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-theme-on-primary-lighten-1: 0,0,0;
+      --v-theme-on-secondary-lighten-1: 255,255,255;
+      --v-theme-on-accent: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 33, 37, 41;
+      --v-theme-on-kbd: 255, 255, 255;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .v-theme--dark {
+      color-scheme: dark;
+      --v-theme-background: 18,18,18;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 33,33,33;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-variant: 189,189,189;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 66,66,66;
+      --v-theme-primary: 187,134,252;
+      --v-theme-primary-overlay-multiplier: 2;
+      --v-theme-primary-darken-1: 55,0,179;
+      --v-theme-primary-darken-1-overlay-multiplier: 1;
+      --v-theme-secondary: 3,218,197;
+      --v-theme-secondary-overlay-multiplier: 2;
+      --v-theme-secondary-darken-1: 3,218,197;
+      --v-theme-secondary-darken-1-overlay-multiplier: 2;
+      --v-theme-error: 207,102,121;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 2;
+      --v-theme-warning: 251,140,0;
+      --v-theme-warning-overlay-multiplier: 2;
+      --v-theme-on-background: 255,255,255;
+      --v-theme-on-surface: 255,255,255;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 0,0,0;
+      --v-theme-on-secondary-darken-1: 0,0,0;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 255,255,255;
+      --v-border-color: 255, 255, 255;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.1;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.16;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 33, 37, 41;
+      --v-theme-on-kbd: 255, 255, 255;
+      --v-theme-code: 52, 52, 52;
+      --v-theme-on-code: 204, 204, 204;
+    }
+    .bg-background {
+      --v-theme-overlay-multiplier: var(--v-theme-background-overlay-multiplier);
+      background-color: rgb(var(--v-theme-background)) !important;
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .bg-surface {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface)) !important;
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .bg-surface-variant {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-variant-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-variant)) !important;
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .bg-primary {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary)) !important;
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .bg-primary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .bg-secondary {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary)) !important;
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .bg-secondary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .bg-error {
+      --v-theme-overlay-multiplier: var(--v-theme-error-overlay-multiplier);
+      background-color: rgb(var(--v-theme-error)) !important;
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .bg-info {
+      --v-theme-overlay-multiplier: var(--v-theme-info-overlay-multiplier);
+      background-color: rgb(var(--v-theme-info)) !important;
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .bg-success {
+      --v-theme-overlay-multiplier: var(--v-theme-success-overlay-multiplier);
+      background-color: rgb(var(--v-theme-success)) !important;
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .bg-warning {
+      --v-theme-overlay-multiplier: var(--v-theme-warning-overlay-multiplier);
+      background-color: rgb(var(--v-theme-warning)) !important;
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+    .bg-primary-lighten-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-lighten-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary-lighten-1)) !important;
+      color: rgb(var(--v-theme-on-primary-lighten-1)) !important;
+    }
+    .bg-secondary-lighten-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-lighten-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary-lighten-1)) !important;
+      color: rgb(var(--v-theme-on-secondary-lighten-1)) !important;
+    }
+    .bg-accent {
+      --v-theme-overlay-multiplier: var(--v-theme-accent-overlay-multiplier);
+      background-color: rgb(var(--v-theme-accent)) !important;
+      color: rgb(var(--v-theme-on-accent)) !important;
+    }
+    .text-background {
+      color: rgb(var(--v-theme-background)) !important;
+    }
+    .border-background {
+      --v-border-color: var(--v-theme-background);
+    }
+    .text-surface {
+      color: rgb(var(--v-theme-surface)) !important;
+    }
+    .border-surface {
+      --v-border-color: var(--v-theme-surface);
+    }
+    .text-surface-variant {
+      color: rgb(var(--v-theme-surface-variant)) !important;
+    }
+    .border-surface-variant {
+      --v-border-color: var(--v-theme-surface-variant);
+    }
+    .on-surface-variant {
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .text-primary {
+      color: rgb(var(--v-theme-primary)) !important;
+    }
+    .border-primary {
+      --v-border-color: var(--v-theme-primary);
+    }
+    .text-primary-darken-1 {
+      color: rgb(var(--v-theme-primary-darken-1)) !important;
+    }
+    .border-primary-darken-1 {
+      --v-border-color: var(--v-theme-primary-darken-1);
+    }
+    .text-secondary {
+      color: rgb(var(--v-theme-secondary)) !important;
+    }
+    .border-secondary {
+      --v-border-color: var(--v-theme-secondary);
+    }
+    .text-secondary-darken-1 {
+      color: rgb(var(--v-theme-secondary-darken-1)) !important;
+    }
+    .border-secondary-darken-1 {
+      --v-border-color: var(--v-theme-secondary-darken-1);
+    }
+    .text-error {
+      color: rgb(var(--v-theme-error)) !important;
+    }
+    .border-error {
+      --v-border-color: var(--v-theme-error);
+    }
+    .text-info {
+      color: rgb(var(--v-theme-info)) !important;
+    }
+    .border-info {
+      --v-border-color: var(--v-theme-info);
+    }
+    .text-success {
+      color: rgb(var(--v-theme-success)) !important;
+    }
+    .border-success {
+      --v-border-color: var(--v-theme-success);
+    }
+    .text-warning {
+      color: rgb(var(--v-theme-warning)) !important;
+    }
+    .border-warning {
+      --v-border-color: var(--v-theme-warning);
+    }
+    .text-primary-lighten-1 {
+      color: rgb(var(--v-theme-primary-lighten-1)) !important;
+    }
+    .border-primary-lighten-1 {
+      --v-border-color: var(--v-theme-primary-lighten-1);
+    }
+    .text-secondary-lighten-1 {
+      color: rgb(var(--v-theme-secondary-lighten-1)) !important;
+    }
+    .border-secondary-lighten-1 {
+      --v-border-color: var(--v-theme-secondary-lighten-1);
+    }
+    .text-accent {
+      color: rgb(var(--v-theme-accent)) !important;
+    }
+    .border-accent {
+      --v-border-color: var(--v-theme-accent);
+    }
+    .on-background {
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .on-surface {
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .on-primary {
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .on-primary-darken-1 {
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .on-secondary {
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .on-secondary-darken-1 {
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .on-error {
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .on-info {
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .on-success {
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .on-warning {
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+    .on-primary-lighten-1 {
+      color: rgb(var(--v-theme-on-primary-lighten-1)) !important;
+    }
+    .on-secondary-lighten-1 {
+      color: rgb(var(--v-theme-on-secondary-lighten-1)) !important;
+    }
+    .on-accent {
+      color: rgb(var(--v-theme-on-accent)) !important;
+    }
+</style><link rel="modulepreload" href="/_payload.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/entry.4f112978.js"><link rel="preload" as="style" href="/_nuxt/entry.637c6911.css"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/default.fabed74b.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/_plugin-vue_export-helper.c27b6911.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/index.a30fc412.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/user.dfd43e99.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/VTextField.051fc180.js"><link rel="preload" as="style" href="/_nuxt/VTextField.492205ac.css"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/VCheckboxBtn.e9544775.js"><link rel="preload" as="style" href="/_nuxt/VCheckboxBtn.74f78248.css"><link rel="prefetch" as="script" crossorigin href="/_nuxt/auth.13121921.js"><link rel="prefetch" as="script" crossorigin href="/_nuxt/error-component.f8bc9505.js"><link rel="stylesheet" href="/_nuxt/entry.637c6911.css"><link rel="stylesheet" href="/_nuxt/VTextField.492205ac.css"><link rel="stylesheet" href="/_nuxt/VCheckboxBtn.74f78248.css"><style>.layout-enter-active,.layout-leave-active,.page-enter-active,.page-leave-active{transition:all .4s}.layout-enter-from,.layout-leave-to,.page-enter-from,.page-leave-to{filter:blur(1rem);opacity:0}</style><style>.card-body[data-v-cf53703e]{margin:.5rem;width:100%}.card-btn[data-v-cf53703e]{position:absolute;right:.5rem;top:.5rem}.card-text[data-v-cf53703e]{font-size:1rem;overflow:hidden;padding-right:3rem;text-overflow:ellipsis;white-space:nowrap}.role-selection[data-v-cf53703e]{margin:0 10px;width:80px}.messages[data-v-cf53703e]{padding:0}.messages .message-line[data-v-cf53703e]:nth-child(odd){background-color:#ddd}.messages .message-line[data-v-cf53703e]:nth-child(2n){background-color:#fff}.user-config[data-v-cf53703e]{bottom:1rem;padding:.5rem .5rem .5rem 0;position:absolute;width:100%}</style></head>
+<body ><div id="__nuxt"><div><!--[--><div class="nuxt-loading-indicator" style="position:fixed;top:0;right:0;left:0;pointer-events:none;width:auto;height:3px;opacity:0;background:repeating-linear-gradient(to right,#00dc82 0%,#34cdfe 50%,#0047e1 100%);background-size:Infinity% auto;transform:scaleX(0%);transform-origin:left;transition:transform 0.1s, height 0.4s, opacity 0.4s;z-index:999999;"></div><!--[--><div class="v-layout" style="z-index:1000;" data-v-cf53703e><!--[--><!--[--><nav class="v-navigation-drawer v-navigation-drawer--left v-theme--light bg-grey-darken-2 rounded-sm" style="left:0;z-index:1004;transform:translateX(-110%);position:fixed;transition:none !important;"><!----><!----><div class="v-navigation-drawer__content"><!--[--><div class="v-container" style="" data-v-cf53703e><div class="v-row" style="" data-v-cf53703e><button type="button" class="v-btn v-btn--block v-theme--light bg-white v-btn--density-default v-btn--rounded v-btn--size-default v-btn--variant-flat" style="" data-v-cf53703e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><span class="v-btn__prepend"><i class="mdi-plus mdi v-icon notranslate v-theme--light v-icon--size-default" style="" aria-hidden="true"></i></span><span class="v-btn__content" data-no-activator><!--[--><!--[--> New Chart <!--]--><!--]--></span><!----><!----></button></div><!--[--><!--]--><div class="v-row user-config" style="" data-v-cf53703e><!--[--><!--[--><button type="button" class="v-btn v-btn--block v-theme--light bg-white v-btn--density-default v-btn--rounded v-btn--size-default v-btn--variant-flat" style="" aria-haspopup="menu" aria-expanded="false" aria-owns="v-menu-2" data-v-cf53703e><!--[--><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span><!--]--><!----><span class="v-btn__content" data-no-activator><!--[--><!--[--><div data-v-cf53703e></div><!--]--><!--]--></span><span class="v-btn__append"><i class="mdi-account-cog-outline mdi v-icon notranslate v-theme--light v-icon--size-default" style="" aria-hidden="true"></i></span><!----></button><!--]--><!----><!--]--></div></div><!--]--></div><!----></nav><!----><!--]--><header class="v-toolbar v-toolbar--flat v-toolbar--density-default elevation-0 rounded-sm v-theme--light v-app-bar" style="top:0;z-index:1006;transform:translateY(0%);position:fixed;transition:none !important;" data-v-cf53703e><!----><!--[--><div class="v-toolbar__content" style="height:40px;"><!----><!----><!----><!----></div><!--]--><!--[--><!----><!--]--></header><main class="v-main" style="--v-layout-left:0px;--v-layout-right:0px;--v-layout-top:0px;--v-layout-bottom:0px;transition:none !important;" data-v-cf53703e><!--[--><div class="v-container messages" style="" data-v-cf53703e><!--[--><!--]--></div><!--]--></main><header class="v-toolbar v-toolbar--flat v-toolbar--density-default rounded-sm v-theme--light v-app-bar v-app-bar--bottom" style="bottom:0;z-index:1006;transform:translateY(0%);position:fixed;transition:none !important;" data-v-cf53703e><!----><!--[--><div class="v-toolbar__content" style="height:200px;"><!----><!----><!--[--><div class="v-container" style="" data-v-cf53703e><div class="v-row v-row--no-gutters" style="" data-v-cf53703e><div class="v-col v-col-10 align-self-center" style="" data-v-cf53703e><div class="v-input v-input--horizontal v-input--density-compact v-textarea v-text-field v-textarea--auto-grow v-textarea--no-resize" style="" data-v-cf53703e><div class="v-input__prepend"><!--[--><div class="v-input v-input--horizontal v-input--density-compact v-input--dirty v-input--readonly v-text-field v-select v-select--single v-select--selected role-selection" style="" data-v-cf53703e><!----><div class="v-input__control"><!--[--><div class="v-field v-field--active v-field--appended v-field--dirty v-field--prepended v-field--no-label v-field--variant-solo v-theme--light v-field--rounded" style="" role="textbox"><div class="v-field__overlay"></div><div class="v-field__loader"><div class="v-progress-linear v-progress-linear--rounded rounded-sm v-theme--light" style="top:0;height:0;--v-progress-linear-height:2px;left:50%;transform:translateX(-50%);" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background" style="width:100%;"></div><div class="v-progress-linear__indeterminate"><!--[--><div class="v-progress-linear__indeterminate long" style=""></div><div class="v-progress-linear__indeterminate short" style=""></div><!--]--></div><!----></div></div><div class="v-field__prepend-inner"><i class="mdi-account mdi v-icon notranslate v-theme--light v-icon--size-default" style="" aria-hidden="true"></i><!----></div><div class="v-field__field" data-no-activator><!----><label class="v-label v-field-label" style="" for="input-7"><!----><!--[--><!----><!--]--></label><!--[--><!--[--><!----><div class="v-field__input" data-no-activator><!--[--><!--[--><!--[--><!----><!----><!--]--><!--[--><div class="v-select__selection"><!--[--><!--]--></div><!--]--><!--]--><!--]--><input value="user" readonly size="1" type="text" id="input-7" aria-describedby="input-7-messages"></div><!----><!--]--><!--]--></div><!----><div class="v-field__append-inner"><!----><i class="mdi-menu-down mdi v-icon notranslate v-theme--light v-icon--size-default" style="" aria-hidden="true"></i></div><div class="v-field__outline"><!----><!----></div></div><!--]--></div><!----><div class="v-input__details"><div class="v-messages" style="" role="alert" aria-live="polite" id="input-7-messages"></div><!----></div></div><!--]--><!----></div><div class="v-input__control"><!--[--><div class="v-field v-field--appended v-field--variant-solo v-theme--light rounded-sm" style="--v-textarea-control-height:;" role="textbox"><div class="v-field__overlay"></div><div class="v-field__loader"><div class="v-progress-linear v-progress-linear--rounded rounded-sm v-theme--light" style="top:0;height:0;--v-progress-linear-height:2px;left:50%;transform:translateX(-50%);" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background" style="width:100%;"></div><div class="v-progress-linear__indeterminate"><!--[--><div class="v-progress-linear__indeterminate long" style=""></div><div class="v-progress-linear__indeterminate short" style=""></div><!--]--></div><!----></div></div><!----><div class="v-field__field" data-no-activator><label class="v-label v-field-label v-field-label--floating" style="" aria-hidden="true" for="input-10"><!----><!--[-->Please input message<!--]--></label><label class="v-label v-field-label" style="" for="input-10"><!----><!--[-->Please input message<!--]--></label><!--[--><!--[--><!----><textarea class="v-field__input" rows="1" id="input-10" aria-describedby="input-10-messages" type="text"></textarea><textarea class="v-field__input v-textarea__sizer" readonly aria-hidden="true"></textarea><!----><!--]--><!--]--></div><div class="v-field__clearable" style="display:none;"><i class="mdi-close-circle mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--clickable" style="" role="button" aria-hidden="false" aria-label="Clear Please input message"></i></div><div class="v-field__append-inner"><!----><i class="mdi-send mdi v-icon notranslate v-theme--light v-icon--size-default v-icon--clickable" style="" role="button" aria-hidden="false" aria-label="Please input message appended action"></i></div><div class="v-field__outline"><!----><!----></div></div><!--]--></div><!----><div class="v-input__details"><div class="v-messages" style="" role="alert" aria-live="polite" id="input-6-messages"></div><!----></div></div></div></div></div><!--]--><!----></div><!--]--><!--[--><!----><!--]--></header><!--]--></div><!--]--><!--[--><!----><!----><!--]--><!--]--></div></div><script type="module">import p from "/_payload.js";window.__NUXT__={...p,...({state:{$suser_info:null},_errors:{},serverRendered:true,prerenderedAt:1684643917264,config:{public:{},app:{baseURL:"\u002F",buildAssetsDir:"\u002F_nuxt\u002F",cdnURL:""}}})}</script><script type="module" src="/_nuxt/entry.4f112978.js" crossorigin></script></body>
+</html>
