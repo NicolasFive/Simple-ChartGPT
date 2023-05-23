@@ -114,8 +114,6 @@ const onSend = async (event) => {
       }
       addMessage(msg)
       send.content=""
-      element.scrollIntoView({behavior: "smooth"});
-      return
       const {data, error} = await sendMessage(Object.assign(useSettings().value,{
         "messages": JSON.parse(JSON.stringify(curChart.value.messages))
       }))
