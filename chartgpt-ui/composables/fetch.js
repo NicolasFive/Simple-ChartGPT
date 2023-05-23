@@ -8,6 +8,7 @@ const fetch = (url,options) => {
                 options.headers.Authorization = auth
             }
         },
+        watch:false
     },options));
 }
 

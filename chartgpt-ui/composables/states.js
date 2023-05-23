@@ -19,7 +19,7 @@ export const useSettings = () => useState(KEY.LOCAL_CHART_SETTING, () => {
     let val = localStorage.getItem(KEY.LOCAL_CHART_SETTING);
     if (!val) return {
         model:'gpt-3.5-turbo',
-        max_tokens:100,
+        max_tokens:1000,
         temperature:1,
         top_p:1,
         n:1,

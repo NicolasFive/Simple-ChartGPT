@@ -49,7 +49,7 @@
     </v-navigation-drawer>
     <v-app-bar elevation="0" :order="0" height="40" flat></v-app-bar>
     <v-main>
-      <v-container class="messages">
+      <v-container class="messages" v-mutate.child="onMutate">
         <template v-if="curChart">
           <Message v-for="it in curChart.messages" :data="it" :key="it.content"></Message>
         </template>
@@ -67,8 +67,8 @@
                           hint="Send message what you want to ask ChartGPT,for example 'Show me a maze code of Java.'"
                           clearable v-model="send.content"
                           :append-inner-icon="send.loading ? 'mdi-send-lock' : 'mdi-send'"
-                          @keydown.enter.prevent="onSend"
-                          @click:append-inner.prevent="onSend">
+                          @keydown.enter.prevent="onSend($event,$vuetify)"
+                          @click:append-inner.prevent="onSend($event,$vuetify)">
               <template #prepend>
                 <v-select
                     class="role-selection"
@@ -99,6 +99,7 @@ var curChart = ref({messages: []})
 var cur = ref(-1)
 var user = ref({})
 
+
 const onSend = async (event) => {
   if (event.ctrlKey || event.shiftKey || event.altKey) {
     send.content += '\n';
@@ -113,6 +114,8 @@ const onSend = async (event) => {
       }
       addMessage(msg)
       send.content=""
+      element.scrollIntoView({behavior: "smooth"});
+      return
       const {data, error} = await sendMessage(Object.assign(useSettings().value,{
         "messages": JSON.parse(JSON.stringify(curChart.value.messages))
       }))
@@ -131,6 +134,12 @@ const onSend = async (event) => {
     }
   }
 }
+
+const onMutate= (records)=>{
+  if (records[0].addedNodes[0])
+  records[0].addedNodes[0].scrollIntoView({behavior: "smooth"});
+}
+
 onMounted(() => {
   charts = getCharts()
   cur = getCur()

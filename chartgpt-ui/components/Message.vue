@@ -1,9 +1,9 @@
 <template>
     <v-row class="message-line">
-      <v-col cols="1" align-self="right">
+      <v-col cols="1">
         <v-icon class="role-icon" :icon="RoleIcon[data.role]"/>
       </v-col>
-      <v-col cols="10" align-self="left">
+      <v-col cols="10">
         <div v-html="contentHtml"></div>
       </v-col>
       <v-col cols="1">

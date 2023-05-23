@@ -7,7 +7,7 @@
           <div class="form-label">Max Tokens</div>
           <v-slider
               v-model="settings.max_tokens"
-              max="1000"
+              max="5000"
               min="100"
               step="10"
               thumb-label="always"></v-slider>
