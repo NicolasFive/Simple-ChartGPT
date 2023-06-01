@@ -1,8 +1,8 @@
-# Simple ChartGPT
+# Simple ChatGPT
 [中文版本](README.zh.md)
 ## Introduction
 
-Simple ChartGPT is a ChartGPT API application that allows you to quickly build your own ChartGPT.Specially for areas where access to the official website of ChartGPT is restricted. It allows for quick setup and usage of ChartGPT.
+Simple ChatGPT is a ChatGPT API application that allows you to quickly build your own ChatGPT.Specially for areas where access to the official website of ChatGPT is restricted. It allows for quick setup and usage of ChatGPT.
 
 ## Deployment
 
