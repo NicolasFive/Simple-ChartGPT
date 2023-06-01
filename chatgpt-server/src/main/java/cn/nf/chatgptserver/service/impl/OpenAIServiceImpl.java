@@ -26,7 +26,7 @@ public class OpenAIServiceImpl implements IOpenAIService {
     public JSONObject sendMessage(ChatMessage msg) {
         try {
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
-            builder.proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress("localhost", 10808)));
+            //builder.proxy(new Proxy(Proxy.Type.HTTP, new InetSocketAddress("localhost", 10808)));
             builder.callTimeout(5, TimeUnit.MINUTES);
             builder.connectTimeout(1, TimeUnit.MINUTES);
             builder.readTimeout(3, TimeUnit.MINUTES);
