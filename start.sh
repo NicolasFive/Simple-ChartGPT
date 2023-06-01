@@ -86,10 +86,10 @@ DB_PASSWORD=${input:-$DB_PASSWORD}
 set_temp_env "DB_PASSWORD" "$DB_PASSWORD"
 
 # Prompt user for OPENAI_AUTH value
-read -p "Enter your Authorization of ChartGPT API (required): " OPENAI_AUTH
+read -p "Enter your Authorization of ChatGPT API (required): " OPENAI_AUTH
 while [ -z "$OPENAI_AUTH" ]; do
-    echo "Your Authorization of ChartGPT API cannot be empty."
-    read -p "Enter the Authorization of ChartGPT API (required): " OPENAI_AUTH
+    echo "Your Authorization of ChatGPT API cannot be empty."
+    read -p "Enter the Authorization of ChatGPT API (required): " OPENAI_AUTH
 done
 set_temp_env "OPENAI_AUTH" "$OPENAI_AUTH"
 
@@ -107,10 +107,10 @@ echo "Script directory: $script_dir"
 
 # Create nginx.conf via environment variables
 cp -f $script_dir/docker/ui/nginx.conf $script_dir/docker/ui/nginx.conf.my
-cp -f $script_dir/chartgpt-ui/nginx.conf $script_dir/chartgpt-ui/nginx.conf.my
-sed -i "s/\${UI_PORT}/${UI_PORT}/g" $script_dir/docker/ui/nginx.conf.my $script_dir/chartgpt-ui/nginx.conf.my
-sed -i "s/\${SERVER_HOST}/${SERVER_HOST}/g" $script_dir/docker/ui/nginx.conf.my $script_dir/chartgpt-ui/nginx.conf.my
-sed -i "s/\${SERVER_PORT}/${SERVER_PORT}/g" $script_dir/docker/ui/nginx.conf.my $script_dir/chartgpt-ui/nginx.conf.my
+cp -f $script_dir/chatgpt-ui/nginx.conf $script_dir/chatgpt-ui/nginx.conf.my
+sed -i "s/\${UI_PORT}/${UI_PORT}/g" $script_dir/docker/ui/nginx.conf.my $script_dir/chatgpt-ui/nginx.conf.my
+sed -i "s/\${SERVER_HOST}/${SERVER_HOST}/g" $script_dir/docker/ui/nginx.conf.my $script_dir/chatgpt-ui/nginx.conf.my
+sed -i "s/\${SERVER_PORT}/${SERVER_PORT}/g" $script_dir/docker/ui/nginx.conf.my $script_dir/chatgpt-ui/nginx.conf.my
 
 # Activate Docker-Compose
 cd $script_dir/docker

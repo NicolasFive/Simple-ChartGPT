@@ -1,6 +1,7 @@
-/chartgpt-server/chartgpt-server.iml
-/chartgpt-ui/node_modules/
-/chartgpt-ui/.history/
-/chartgpt-ui/.nuxt/
-/chartgpt-server/target/
+/chatgpt-server/chatgpt-server.iml
+/chatgpt-ui/node_modules/
+/chatgpt-ui/.history/
+/chatgpt-ui/.nuxt/
+/chatgpt-server/target/
 /.idea/
+/chatgpt-server/src/test/java/cn/nf/chatgptserver/ChatgptServerApplicationTests.java
