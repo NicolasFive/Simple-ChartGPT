@@ -1,1 +1,0 @@
-import{bv as a}from"./entry.92238b29.js";import{c as o,f}from"./user.9b40c3bf.js";const l=a((e,i)=>{const t=o(),r="/login",s="/register";!t.value&&e.path!==r&&e.path!==s&&f(e.fullPath)});export{l as default};
