@@ -1,5 +1,5 @@
 # Simple ChartGPT
-
+[English](README.md)
 ## 简介
 
 Simple ChartGPT 是一个基于 ChartGPT API 的应用，让你快速构建自己的 ChartGPT，特别适用于无法访问 ChartGPT 官方网站的地区。它可以快速搭建和使用 ChartGPT。
