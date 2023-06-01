@@ -1,8 +1,8 @@
-# Simple ChartGPT
+# Simple ChatGPT
 [English](README.md)
 ## 简介
 
-Simple ChartGPT 是一个基于 ChartGPT API 的应用，让你快速构建自己的 ChartGPT，特别适用于无法访问 ChartGPT 官方网站的地区。它可以快速搭建和使用 ChartGPT。
+Simple ChatGPT 是一个基于 ChatGPT API 的应用，让你快速构建自己的 ChatGPT，特别适用于无法访问 ChatGPT 官方网站的地区。它可以快速搭建和使用 ChatGPT。
 
 ## 部署
 
