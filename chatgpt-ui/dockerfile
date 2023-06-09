@@ -1,5 +1,11 @@
+FROM node:18-alpine as builder
+WORKDIR /app
+COPY . .
+RUN npm install
+RUN npm run generate
+
 FROM nginx:1.22
 WORKDIR /app
-COPY public .
+COPY --from=builder /app/.output/public .
 COPY nginx.conf.my /etc/nginx/nginx.conf
 RUN rm -rf /etc/nginx/conf.d/*
