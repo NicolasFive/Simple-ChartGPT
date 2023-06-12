@@ -106,11 +106,16 @@ script_dir="$(cd "$(dirname "$0")" && pwd)"
 echo "Script directory: $script_dir"
 
 # Create nginx.conf via environment variables
-cp -f $script_dir/docker/ui/nginx.conf $script_dir/docker/ui/nginx.conf.my
-cp -f $script_dir/chatgpt-ui/nginx.conf $script_dir/chatgpt-ui/nginx.conf.my
-sed -i "s/\${UI_PORT}/${UI_PORT}/g" $script_dir/docker/ui/nginx.conf.my $script_dir/chatgpt-ui/nginx.conf.my
-sed -i "s/\${SERVER_HOST}/${SERVER_HOST}/g" $script_dir/docker/ui/nginx.conf.my $script_dir/chatgpt-ui/nginx.conf.my
-sed -i "s/\${SERVER_PORT}/${SERVER_PORT}/g" $script_dir/docker/ui/nginx.conf.my $script_dir/chatgpt-ui/nginx.conf.my
+if [ -e "$script_dir/docker/ui/nginx.conf.my" ];
+then
+    echo "nginx.conf.my already exists and will use it to build."
+else
+    cp -f $script_dir/docker/ui/nginx.conf $script_dir/docker/ui/nginx.conf.my
+    cp -f $script_dir/chatgpt-ui/nginx.conf $script_dir/chatgpt-ui/nginx.conf.my
+    sed -i "s/\${UI_PORT}/${UI_PORT}/g" $script_dir/docker/ui/nginx.conf.my $script_dir/chatgpt-ui/nginx.conf.my
+    sed -i "s/\${SERVER_HOST}/${SERVER_HOST}/g" $script_dir/docker/ui/nginx.conf.my $script_dir/chatgpt-ui/nginx.conf.my
+    sed -i "s/\${SERVER_PORT}/${SERVER_PORT}/g" $script_dir/docker/ui/nginx.conf.my $script_dir/chatgpt-ui/nginx.conf.my
+fi
 
 # Activate Docker-Compose
 cd $script_dir/docker
