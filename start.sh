@@ -58,7 +58,7 @@ ACTIVATE_MODULE="nf-server-local"
 
 
 
-echo -n "Do you want to use history config which ? (Y/N): "
+echo -n "Do you want to use history config which ? (Y/N,default N): "
 read answer
 if [ "$answer" == "Y" ] || [ "$answer" == "y" ]; then
 
