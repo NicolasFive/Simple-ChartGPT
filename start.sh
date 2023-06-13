@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+# Get Script directory
+script_dir="$(cd "$(dirname "$0")" && pwd)"
+echo "Script directory: $script_dir"
+
 # Check if Docker Engine is installed
 if ! [ -x "$(command -v docker)" ]; then
     echo "Docker Engine is not installed. Installing Docker Engine..."
@@ -38,7 +43,7 @@ fi
 # Function to set temporary environment variables
 set_temp_env() {
     export "$1=$2"
-    #echo "$1=$2" >> .env_temp
+    echo "$1=$2" >> $script_dir/.env_temp
 }
 
 # Set default values
@@ -49,6 +54,16 @@ REDIS_PORT="6379"
 REDIS_PASSWORD="my_pwd@2023"
 DB_PORT="3306"
 DB_PASSWORD="my_pwd@2023"
+ACTIVATE_MODULE="nf-server-local"
+
+
+
+echo -n "Do you want to use history config which ? (Y/N): "
+read answer
+if [ "$answer" == "Y" ] || [ "$answer" == "y" ]; then
+
+# Clean up the temporary file
+rm $script_dir/.env_temp
 
 # Prompt user for SERVER_HOST value
 read -p "Enter the IP address (default: $SERVER_HOST): " input
@@ -95,15 +110,12 @@ set_temp_env "OPENAI_AUTH" "$OPENAI_AUTH"
 
 echo "Temporary environment variables have been set."
 
+else
+
 # Source the temporary environment variables
-source ./.env_temp
+source $script_dir/.env_temp
 
-# Clean up the temporary file
-rm ./.env_temp
-
-# Get Script directory
-script_dir="$(cd "$(dirname "$0")" && pwd)"
-echo "Script directory: $script_dir"
+fi
 
 # Create nginx.conf via environment variables
 if [ -e "$script_dir/docker/ui/nginx.conf.my" ];
@@ -119,4 +131,7 @@ fi
 
 # Activate Docker-Compose
 cd $script_dir/docker
-docker-compose up -d nf-server-local
+
+read -p "Enter the Activate modules (default: $ACTIVATE_MODULE): " input
+ACTIVATE_MODULE=${input:-$ACTIVATE_MODULE}
+docker-compose up -d $ACTIVATE_MODULE

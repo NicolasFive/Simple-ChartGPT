@@ -30,7 +30,7 @@ files=()
 files+=("$script_dir/docker/mysql/data")
 files+=("$script_dir/docker/ui/nginx.conf.my")
 for f in "${files[@]}"; do
-  echo -n "Do you want to delete the $f? (Y/N): "
+  echo -n "Do you want to delete files '$f'? (Y/N): "
   read answer
   if [ "$answer" == "Y" ] || [ "$answer" == "y" ]; then
       echo "Deleting $f"
