@@ -43,7 +43,7 @@ fi
 # Function to set temporary environment variables
 set_temp_env() {
     export "$1=$2"
-    echo "$1=$2" >> $script_dir/.env_temp
+    echo "export $1=$2" >> $script_dir/.env_temp
 }
 
 # Set default values
