@@ -62,6 +62,11 @@ echo -n "Do you want to use history config which ? (Y/N): "
 read answer
 if [ "$answer" == "Y" ] || [ "$answer" == "y" ]; then
 
+# Source the temporary environment variables
+source $script_dir/.env_temp
+
+else
+
 # Clean up the temporary file
 rm $script_dir/.env_temp
 
@@ -109,11 +114,6 @@ done
 set_temp_env "OPENAI_AUTH" "$OPENAI_AUTH"
 
 echo "Temporary environment variables have been set."
-
-else
-
-# Source the temporary environment variables
-source $script_dir/.env_temp
 
 fi
 
