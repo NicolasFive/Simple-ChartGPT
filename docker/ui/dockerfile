@@ -2,5 +2,5 @@ FROM nginx:1.22
 WORKDIR /app
 COPY public .
 COPY nginx.conf.my /etc/nginx/nginx.conf
-COPY others /etc/nginx
+COPY others /etc/nginx/others
 RUN rm -rf /etc/nginx/conf.d/*
