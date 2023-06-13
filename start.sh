@@ -68,7 +68,10 @@ source $script_dir/.env_temp
 else
 
 # Clean up the temporary file
+if [ -e "$script_dir/.env_temp" ];
+then
 rm $script_dir/.env_temp
+fi
 
 # Prompt user for SERVER_HOST value
 read -p "Enter the IP address (default: $SERVER_HOST): " input
