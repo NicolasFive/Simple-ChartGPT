@@ -5,3 +5,4 @@
 /chatgpt-server/target/
 /.idea/
 /chatgpt-server/src/test/java/cn/nf/chatgptserver/ChatgptServerApplicationTests.java
+/docker/ui/nginx.conf.v2ray_ssl

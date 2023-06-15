@@ -36,6 +36,8 @@ services:
       UI_PORT: ${UI_PORT}
     networks:
       - nf-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
   nf-mysql:
     container_name: nf-mysql
     image: mysql:5.7
@@ -113,6 +115,8 @@ services:
       UI_PORT: ${UI_PORT}
     networks:
       - nf-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 networks:
   nf-network:
     driver: bridge
