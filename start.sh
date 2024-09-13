@@ -30,7 +30,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
     sudo yum install -y docker-compose-plugin
 
     # Check if Docker Compose installation was successful
-    if [ -x "$(command -v docker-compose)" ]; then
+    if [ -x "$(command -v docker compose)" ]; then
         echo "Docker Compose has been installed successfully."
     else
         echo "Failed to install Docker Compose. Please install it manually."
