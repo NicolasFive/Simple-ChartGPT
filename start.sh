@@ -137,4 +137,4 @@ cd $script_dir/docker
 
 read -p "Enter the Activate modules (default: $ACTIVATE_MODULE): " input
 ACTIVATE_MODULE=${input:-$ACTIVATE_MODULE}
-docker-compose up -d $ACTIVATE_MODULE
+docker compose up -d $ACTIVATE_MODULE
