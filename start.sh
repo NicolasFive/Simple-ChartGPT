@@ -25,7 +25,7 @@ else
 fi
 
 # Check if Docker Compose is installed
-if ! [ -x "$(command -v docker-compose)" ]; then
+if ! [ -x "$(command -v docker compose)" ]; then
     echo "Docker Compose is not installed. Installing Docker Compose..."
     sudo yum install -y docker-compose-plugin
 
